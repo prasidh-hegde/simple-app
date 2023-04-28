@@ -1,0 +1,29 @@
+<nav class="card navbar navbar-expand-lg navbar-light bg-light">
+  <div class="navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown" dropdown *ngFor="let category of categories">
+        <a
+          class="nav-link dropdown-toggle"
+          href="javascript:void(0);"
+          id="navbarDropdownMenuLink"
+          dropdownToggle
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="true"
+        >
+          {{category.name}}
+        </a>
+      
+        <div
+          *dropdownMenu
+          class="dropdown-menu"
+          aria-labelledby="navbarDropdownMenuLink"
+        >
+          <a class="dropdown-item" [routerLink]="['/products',category.name]" [queryParams]="{price: '300'}" *ngFor="let menu of category.options">{{menu}}</a>
+          <!-- <a class="dropdown-item" routerLink="/product/1">Another action</a>
+          <a class="dropdown-item" routerLink="/product/1">Something else here</a> -->
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
